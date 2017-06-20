@@ -8,8 +8,8 @@ RUN \
     curl \
     openssh-client \
     unzip \
-    git && \
-  rm -rf /var/lib/apt/lists/*
+    jq \
+    git
 
  ENV GOPATH /go
  ENV PATH /go/bin:/usr/local/go/bin:$PATH
