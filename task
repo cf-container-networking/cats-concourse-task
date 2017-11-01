@@ -27,7 +27,7 @@ export CF_DIAL_TIMEOUT=11
 export CF_PLUGIN_HOME=$HOME
 
 pushd "$CF_NETWORKING_RELEASE_GOPATH/src/cli-plugin"
-  go build -o /tmp/network-policy-plugin
+  GOPATH="$CF_NETWORKING_RELEASE_GOPATH" go build -o /tmp/network-policy-plugin
   chmod +x /tmp/network-policy-plugin
   cf install-plugin /tmp/network-policy-plugin -f
 popd
