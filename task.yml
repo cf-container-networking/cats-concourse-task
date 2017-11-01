@@ -10,6 +10,8 @@ inputs:
 - name: cats-concourse-task
 - name: cf-acceptance-tests
 - name: integration-config
+- name: cf-networking-release
+
 outputs:
 - name: cats-trace-output
 
