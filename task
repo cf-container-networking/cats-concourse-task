@@ -5,6 +5,7 @@ export CONFIG
 CONFIG="$PWD/integration-config/${CONFIG_FILE_PATH}"
 
 CF_GOPATH=/go/src/github.com/cloudfoundry/
+CF_NETWORKING_RELEASE_GOPATH="$PWD/cf-networking-release"
 
 echo "Moving cf-acceptance-tests onto the gopath..."
 mkdir -p $CF_GOPATH
@@ -13,6 +14,14 @@ cp -R cf-acceptance-tests $CF_GOPATH
 cd /go/src/github.com/cloudfoundry/cf-acceptance-tests
 
 export CF_DIAL_TIMEOUT=11
+
+export CF_PLUGIN_HOME=$HOME
+
+pushd "$CF_NETWORKING_RELEASE_GOPATH/src/cli-plugin"
+  go build -o /tmp/network-policy-plugin
+  chmod +x /tmp/network-policy-plugin
+  cf install-plugin /tmp/network-policy-plugin -f
+popd
 
 ./bin/test \
 -keepGoing \

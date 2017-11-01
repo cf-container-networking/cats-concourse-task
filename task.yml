@@ -10,6 +10,7 @@ inputs:
 - name: cats-concourse-task
 - name: cf-acceptance-tests
 - name: integration-config
+- name: cf-networking-release
 
 run:
   path: cats-concourse-task/task
