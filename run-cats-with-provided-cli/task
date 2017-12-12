@@ -6,5 +6,9 @@ build_dir=${PWD}
 echo "Setting PATH so that input cf-cli is found by CATs..."
 PATH="${build_dir}/cf-cli":$PATH
 export PATH
+pushd $build_dir/cf-cli
+  ln -s cf_* cf
+  chmod +x *
+popd
 
 cats-concourse-task/task
